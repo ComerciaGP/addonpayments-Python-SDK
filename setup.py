@@ -33,7 +33,7 @@ def get_email(package):
 
 setup(
     name='addonpayments-sdk-python',
-    version=get_version('addonpayments-sdk-python'),
+    version=get_version('addonpayments'),
     packages=find_packages(exclude=('*.tests*')),
     include_package_data=True,
     keywords="addonpayments sdk python hpp api",
@@ -46,8 +46,8 @@ setup(
         'requests',
     ],
     url='https://gitlab.apsl.net/addonpayments/addonpayments-sdk-python',
-    author=get_author('addonpayments-sdk-python'),
-    author_email=get_email('addonpayments-sdk-python'),
+    author=get_author('addonpayments'),
+    author_email=get_email('addonpayments'),
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
