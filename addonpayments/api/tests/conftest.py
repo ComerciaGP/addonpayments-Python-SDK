@@ -11,8 +11,8 @@ class BaseTest(object):
     """
     This class defines the static variables used in all tests
     """
-    merchant_id = config('MERCHANT_ID', default='apsl')
-    secret = config('SHARED_SECRET', default='secret')
+    merchant_id = config('MERCHANT_ID', default='yourmerchantid')
+    secret = config('SHARED_SECRET', default='yoursecretkey')
     payer_ref = 'ref-payer-test'
     card_ref = 'ref-card-test'
 
