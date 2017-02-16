@@ -3,9 +3,9 @@
 import attr
 from attr import ib as Field
 
-from sdk.validators import RequestValidator
-from sdk.api.mixins import XmlMixin
-from sdk.utils import GenerationUtils
+from validators import RequestValidator
+from utils import GenerationUtils
+from api.mixins import XmlMixin
 
 
 @attr.s

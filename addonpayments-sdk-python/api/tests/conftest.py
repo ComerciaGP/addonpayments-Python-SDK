@@ -3,8 +3,8 @@
 import pytest
 from decouple import config
 
-from sdk.api.elements import (Cvn, CardWithCvn, Recurring, Mpi, DccInfoWithAmount, PaymentData, CardWithRef, CardRef,
-                              DccInfo, DccInfoWithRateType, Address, PhoneNumbers, Payer, Card)
+from api.elements import (Cvn, CardWithCvn, Recurring, Mpi, DccInfoWithAmount, PaymentData, CardWithRef, CardRef,
+                          DccInfo, DccInfoWithRateType, Address, PhoneNumbers, Payer, Card)
 
 
 class BaseTest(object):

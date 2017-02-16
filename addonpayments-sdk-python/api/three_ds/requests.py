@@ -3,9 +3,9 @@
 import attr
 from attr import ib as Field
 
-from sdk.api.common.requests import ApiRequest
-from sdk.api.elements import Card
-from sdk.api.mixins import FieldsAmountMixin, FieldsCommentMixin
+from api.common.requests import ApiRequest
+from api.elements import Card
+from api.mixins import FieldsAmountMixin, FieldsCommentMixin
 
 
 @attr.s

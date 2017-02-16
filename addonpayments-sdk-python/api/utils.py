@@ -3,8 +3,8 @@
 import xmltodict
 import json
 
-from sdk.exceptions import SdkError
-from sdk.logger import Logger
+from exceptions import SdkError
+from logger import Logger
 
 logger = Logger().get_logger(__name__)
 

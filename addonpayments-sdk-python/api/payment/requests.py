@@ -3,9 +3,9 @@
 import attr
 from attr import ib as Field
 
-from sdk.api.common.requests import ApiRequest
-from sdk.api.elements import Card, Recurring, Mpi, DccInfoWithAmount
-from sdk.api.mixins import FieldsAmountMixin, FieldsMixin
+from api.common.requests import ApiRequest
+from api.elements import Card, Recurring, Mpi, DccInfoWithAmount
+from api.mixins import FieldsAmountMixin, FieldsMixin
 
 
 @attr.s

@@ -3,9 +3,9 @@
 import attr
 from attr import ib as Field
 
-from sdk.api.validators import FieldsValidator as Validator
-from sdk.mixins import DictMixin
-from sdk.validators import RequestValidator
+from api.validators import FieldsValidator as Validator
+from mixins import DictMixin
+from validators import RequestValidator
 
 
 @attr.s

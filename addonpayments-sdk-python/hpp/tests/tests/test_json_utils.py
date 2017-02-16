@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
-from sdk.hpp.card_storage.requests import CardStorageRequest
-from sdk.hpp.payment.requests import PaymentRequest
+
+from hpp.card_storage.requests import CardStorageRequest
+from hpp.payment.requests import PaymentRequest
 
 
 class TestJsonUtils:

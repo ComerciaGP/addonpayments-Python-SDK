@@ -3,9 +3,9 @@
 import attr
 from attr import ib as Field
 
-from sdk.api.mixins import FieldsCommentMixin, XmlMixin, FieldsAmountMixin
-from sdk.api.validators import (FieldsValidator, CardValidator, CvnValidator, AddressValidator, PhoneValidator,
-                                PayerValidator, DccValidator, RecurringValidator, MpiValidator)
+from api.mixins import FieldsCommentMixin, XmlMixin, FieldsAmountMixin
+from api.validators import (FieldsValidator, CardValidator, CvnValidator, AddressValidator, PhoneValidator,
+                            PayerValidator, DccValidator, RecurringValidator, MpiValidator)
 
 
 @attr.s

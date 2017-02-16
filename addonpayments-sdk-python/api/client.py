@@ -4,9 +4,9 @@ import requests
 import attr
 from decouple import config
 
-from sdk.exceptions import SdkError
-from sdk.logger import Logger
-from sdk.api.utils import XmlUtils
+from exceptions import SdkError
+from logger import Logger
+from api.utils import XmlUtils
 
 logger = Logger().get_logger(__name__)
 

@@ -3,10 +3,10 @@
 import attr
 from attr import ib as Field
 
-from sdk.api.validators import FieldsValidator as Validator
-from sdk.api.common.requests import ApiRequest
-from sdk.api.elements import PaymentData, Payer, CardWithRef, CardRef, DccInfo, Recurring
-from sdk.api.mixins import FieldsAmountMixin, FieldsMixin, FieldsCommentMixin
+from api.validators import FieldsValidator as Validator
+from api.common.requests import ApiRequest
+from api.elements import PaymentData, Payer, CardWithRef, CardRef, DccInfo, Recurring
+from api.mixins import FieldsAmountMixin, FieldsMixin, FieldsCommentMixin
 
 
 @attr.s

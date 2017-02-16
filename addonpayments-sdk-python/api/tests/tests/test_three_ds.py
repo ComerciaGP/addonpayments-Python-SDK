@@ -2,9 +2,9 @@
 
 import pytest
 
-from sdk.api.client import ApiClient
-from sdk.api.tests.conftest import BaseTest
-from sdk.api.three_ds.requests import ThreeDsVerifyEnrolled, ThreeDsVerifySig
+from api.client import ApiClient
+from api.tests.conftest import BaseTest
+from api.three_ds.requests import ThreeDsVerifyEnrolled, ThreeDsVerifySig
 
 
 class TestThreeDs(BaseTest):

@@ -2,9 +2,9 @@
 
 import pytest
 
-from sdk.api.client import ApiClient
-from sdk.api.dcc.requests import DccRate
-from sdk.api.tests.conftest import BaseTest
+from api.client import ApiClient
+from api.dcc.requests import DccRate
+from api.tests.conftest import BaseTest
 
 
 class TestDcc(BaseTest):

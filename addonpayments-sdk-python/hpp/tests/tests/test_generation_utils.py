@@ -2,7 +2,7 @@
 
 import re
 
-from sdk.utils import GenerationUtils
+from utils import GenerationUtils
 
 
 class TestGenerationUtils:

@@ -2,9 +2,9 @@
 
 import pytest
 
-from sdk.api.client import ApiClient
-from sdk.api.payment.requests import AuthRequest
-from sdk.api.tests.conftest import BaseTest
+from api.client import ApiClient
+from api.payment.requests import AuthRequest
+from api.tests.conftest import BaseTest
 
 
 class TestPayment(BaseTest):

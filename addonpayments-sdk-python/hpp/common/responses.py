@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-from sdk.utils import GenerationUtils
+from utils import GenerationUtils
 
 
 class HppResponse(object):

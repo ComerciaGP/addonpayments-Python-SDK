@@ -2,8 +2,8 @@
 
 import attr
 
-from sdk.hpp.common.requests import HppRequest
-from sdk.utils import GenerationUtils
+from utils import GenerationUtils
+from hpp.common.requests import HppRequest
 
 
 @attr.s

@@ -2,10 +2,10 @@
 
 import attr
 
-from sdk.exceptions import SdkError
-from sdk.hpp.common.responses import HppResponse
-from sdk.hpp.utils import JsonUtils, ValidationUtils
-from sdk.logger import Logger
+from exceptions import SdkError
+from hpp.common.responses import HppResponse
+from hpp.utils import JsonUtils, ValidationUtils
+from logger import Logger
 
 logger = Logger().get_logger(__name__)
 

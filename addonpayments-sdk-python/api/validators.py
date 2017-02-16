@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-from sdk.utils import ValidateUtils as Validate
+from utils import ValidateUtils as Validate
 
 
 class FieldsValidator(object):

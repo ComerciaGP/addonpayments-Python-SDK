@@ -3,9 +3,9 @@
 import attr
 from attr import ib as Field
 
-from sdk.hpp.common.requests import HppRequest
-from sdk.utils import GenerationUtils
-from sdk.hpp.validators import HppValidator as Validator
+from utils import GenerationUtils
+from hpp.common.requests import HppRequest
+from hpp.validators import HppValidator as Validator
 
 
 @attr.s

@@ -2,10 +2,10 @@
 
 import pytest
 
-from sdk.hpp.card_storage.requests import CardStorageRequest
-from sdk.hpp.payment.requests import PaymentRequest
-from sdk.hpp.tests.utils import sample_path, only_mandatory_hpp_request, hpp_request_storage_enabled
-from sdk.hpp.utils import JsonUtils
+from hpp.card_storage.requests import CardStorageRequest
+from hpp.payment.requests import PaymentRequest
+from hpp.tests.utils import sample_path, only_mandatory_hpp_request, hpp_request_storage_enabled
+from hpp.utils import JsonUtils
 
 CHARSET = "utf-8"
 HPP_PAYMENT_REQUEST_VALID_JSON_PATH = "samples/hpp_payment_request.json"

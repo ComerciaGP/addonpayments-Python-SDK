@@ -3,10 +3,10 @@
 import attr
 from attr import ib as Field
 
-from sdk.mixins import DictMixin
-from sdk.utils import GenerationUtils
-from sdk.validators import RequestValidator
-from sdk.hpp.validators import HppValidator as Validator
+from mixins import DictMixin
+from utils import GenerationUtils
+from validators import RequestValidator
+from hpp.validators import HppValidator as Validator
 
 
 @attr.s

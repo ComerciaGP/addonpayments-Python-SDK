@@ -2,11 +2,11 @@
 
 import pytest
 
-from sdk.api.card_storage.requests import (ReceiptInRequest, CardUpdateRequest, CardNewRequest, CardCancelRequest,
-                                           CardDccRateRequest, RealVaultThreeDsVerifyEnrolled, PayerNewRequest,
-                                           PayerEditRequest)
-from sdk.api.client import ApiClient
-from sdk.api.tests.conftest import BaseTest
+from api.card_storage.requests import (ReceiptInRequest, CardUpdateRequest, CardNewRequest, CardCancelRequest,
+                                       CardDccRateRequest, RealVaultThreeDsVerifyEnrolled, PayerNewRequest,
+                                       PayerEditRequest)
+from api.client import ApiClient
+from api.tests.conftest import BaseTest
 
 
 class TestCardStorage(BaseTest):

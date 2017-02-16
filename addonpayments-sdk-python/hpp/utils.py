@@ -3,11 +3,11 @@
 import base64
 import json
 
-from sdk.exceptions import SdkError
-from sdk.hpp.card_storage.requests import CardStorageRequest
-from sdk.hpp.payment.requests import PaymentRequest
-from sdk.hpp.common.responses import HppResponse
-from sdk.logger import Logger
+from exceptions import SdkError
+from hpp.card_storage.requests import CardStorageRequest
+from hpp.payment.requests import PaymentRequest
+from hpp.common.responses import HppResponse
+from logger import Logger
 
 logger = Logger().get_logger(__name__)
 

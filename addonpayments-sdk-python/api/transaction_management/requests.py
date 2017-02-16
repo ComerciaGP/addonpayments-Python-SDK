@@ -3,10 +3,10 @@
 import attr
 from attr import ib as Field
 
-from sdk.api.transaction_management.validators import TransactionManagementValidator
-from sdk.api.common.requests import ApiRequest
-from sdk.api.mixins import FieldsAmountMixin, FieldsCommentMixin
-from sdk.validators import RequestValidator
+from api.transaction_management.validators import TransactionManagementValidator
+from api.common.requests import ApiRequest
+from api.mixins import FieldsAmountMixin, FieldsCommentMixin
+from validators import RequestValidator
 
 
 @attr.s
