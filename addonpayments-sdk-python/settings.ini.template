@@ -1,0 +1,7 @@
+; cp settings.ini.template your_project_folder/app.ini
+[settings]
+DEBUG=True
+MERCHANT_ID = yourmerchantid
+SHARED_SECRET = yoursharedsecret
+ADDONPAYMENTS_HPP_URL = https://hpp.sandbox.addonpayments.com/pay
+ADDONPAYMENTS_API_URL = https://remote.sandbox.addonpayments.com/remote
