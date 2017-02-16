@@ -42,8 +42,8 @@ setup(
     install_requires=[
         'python-decouple',
         'attrs',
-        'xmltodict'
-        'requests'
+        'xmltodict',
+        'requests',
     ],
     url='https://gitlab.apsl.net/addonpayments/addonpayments-sdk-python',
     author=get_author('addonpayments-sdk-python'),
