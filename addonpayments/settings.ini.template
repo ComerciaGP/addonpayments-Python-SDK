@@ -1,4 +1,4 @@
-; cp settings.ini.template your_project_folder/app.ini
+; cp settings.ini.template your_project_folder/settings.ini
 [settings]
 DEBUG=True
 MERCHANT_ID = yourmerchantid
