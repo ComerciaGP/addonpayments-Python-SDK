@@ -58,3 +58,6 @@ target/
 
 # PyCharm
 .idea
+
+# Python decouple settings file
+settings.ini

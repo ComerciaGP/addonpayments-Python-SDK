@@ -30,7 +30,7 @@ First of all, you need to install AddonPayments SDK Python package::
 
 In order to use the SDK it is necessary to have an account in Addon Payments, then it will be necessary to configure
 the SDK with the values ​​of your account. Create the settings.ini file in your project with the content that we provide
-in the settings.ini.template file:
+in the addonpayments/settings.ini.template file:
 
 .. code-block::
 
