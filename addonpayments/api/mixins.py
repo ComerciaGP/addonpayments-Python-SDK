@@ -23,7 +23,7 @@ class FieldsMixin(FieldsCommentMixin):
     This mixin add fields used in many requests
     """
     channel = Field(default='', validator=Validator.channel)
-    autosettle = Field(default=None, validator=Validator.flag)
+    autosettle = Field(default=None, validator=RequestValidator.flag)
 
 
 @attr.s

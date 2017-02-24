@@ -14,20 +14,6 @@ class FieldsValidator(object):
     """
 
     @staticmethod
-    def flag(instance, attribute, value):
-        """
-        Validator for flag attributes, boolean but in XML are represented with '0' or '1'
-            * Type: Mandatory
-            * Format: True, False, 1, 0, '1', '0'
-        :param instance: object
-        :param attribute:
-        :param value:
-        """
-        Validate.validate_mandatory(attribute.name, value)
-        if value not in [True, False, 1, 0, '1', '0']:
-            raise ValueError("{} must only True, False, 1, 0, '1' or '0'".format(attribute.name))
-
-    @staticmethod
     def comment(name, value):
         """
         Validator for comment attribute:

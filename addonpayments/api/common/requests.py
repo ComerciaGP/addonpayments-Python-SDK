@@ -5,11 +5,12 @@ from attr import ib as Field
 
 from addonpayments.validators import RequestValidator
 from addonpayments.utils import GenerationUtils
+from addonpayments.mixins import HashMixin
 from addonpayments.api.mixins import XmlMixin
 
 
 @attr.s
-class ApiRequest(XmlMixin):
+class ApiRequest(HashMixin, XmlMixin):
     """
     Super class representing a request to be sent to API.
     This class contains all common attributes and functions for all other classes.
@@ -19,6 +20,7 @@ class ApiRequest(XmlMixin):
 
     Subclasses values (fields to be defined in the subclasses):
         request_type            Type of the Addonpayments request (auth, receipt-in, payer-new, card-new, ...)
+    Mixin HashMixin attributes:
         hash_values             Hash a string made up of the request values
     Mixin XMLMixin attributes:
         xml_root_tag            If the object is a Request the root tag is <request attributes></ request>.
@@ -42,7 +44,6 @@ class ApiRequest(XmlMixin):
     # Static variables
     # Defined in subclasses
     request_type = ''
-    hash_values = []
     # Default values for XmlMixin, all XML requests starts with <request type='' timestamp=''>
     xml_root_tag = 'request'
     xml_root_attributes = ['timestamp', 'type']
@@ -58,24 +59,3 @@ class ApiRequest(XmlMixin):
             self.timestamp = gen_utl.generate_timestamp()
         if not self.orderid:
             self.orderid = gen_utl.generate_order_id()
-
-    def get_hash_values(self):
-        """
-        This method return a list values to generate hash
-        :return: list
-        """
-        return [getattr(self, f) for f in self.hash_values]
-
-    def hash(self, secret):
-        """
-        Creates the security hash from a number of fields and the shared secret.
-        :param secret: string
-        """
-        # Generate string to hash from fields values list
-        str_hash = '.'.join(self.get_hash_values())
-        # Generate HASH
-        gen_utl = GenerationUtils()
-        self.sha1hash = gen_utl.generate_hash(str_hash, secret)
-        # Validate hash
-        attr.validate(self)
-        return self.sha1hash

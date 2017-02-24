@@ -52,7 +52,7 @@ class PayerNewRequest(FieldsCommentMixin, ApiRequest):
         Override function to get necessary hash values for this request
         :return: list
         """
-        # Empty values represents amount  and currency
+        # Empty values represents amount and currency
         return [self.timestamp, self.merchantid, self.orderid, '', '', self.payer.ref]
 
 

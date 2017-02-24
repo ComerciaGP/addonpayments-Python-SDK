@@ -3,14 +3,14 @@
 import attr
 from attr import ib as Field
 
-from addonpayments.mixins import DictMixin
+from addonpayments.mixins import DictMixin, HashMixin
 from addonpayments.utils import GenerationUtils
 from addonpayments.validators import RequestValidator
 from addonpayments.hpp.validators import HppValidator as Validator
 
 
 @attr.s
-class HppRequest(DictMixin):
+class HppRequest(HashMixin, DictMixin):
     """
     Super class representing a request to be sent to HPP.
     This class contains all common attributes and functions for all other classes.
@@ -23,7 +23,7 @@ class HppRequest(DictMixin):
     merchant_id = Field(validator=RequestValidator.merchant_id)
     amount = Field(convert=str, validator=RequestValidator.amount)
     currency = Field(validator=RequestValidator.currency)
-    auto_settle_flag = Field(validator=Validator.flag)
+    auto_settle_flag = Field(validator=RequestValidator.flag)
 
     # Mandatory fields with auto-generation
     timestamp = Field(default=None, validator=RequestValidator.timestamp)
@@ -80,24 +80,3 @@ class HppRequest(DictMixin):
             if result_value:
                 result[key.upper()] = result_value
         return result
-
-    def hash(self, secret):
-        """
-        Creates the security hash from a number of fields and the shared secret.
-        :param secret: string
-        """
-        # Get required values to generate HASH
-        if int(self.card_storage_enable) == 1:
-            str_hash = '{}.{}.{}.{}.{}.{}.{}'.format(
-                self.timestamp, self.merchant_id, self.order_id, self.amount,
-                self.currency, self.payer_ref, self.pmt_ref
-            )
-        else:
-            str_hash = '{}.{}.{}.{}.{}'.format(
-                self.timestamp, self.merchant_id, self.order_id, self.amount, self.currency
-            )
-
-        # Generate HASH
-        gen_utl = GenerationUtils()
-        self.sha1hash = gen_utl.generate_hash(str_hash, secret)
-        return self.sha1hash

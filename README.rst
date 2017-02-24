@@ -1,8 +1,8 @@
 AddonPayments SDK Python
 ========================
 
-AddonPayments SDK Python is a library that allows integration with the SDKs of AddonPayments in a easy and fast way.
-There are two types of integration: HPP (Hosted Payment Page) and integration API
+AddonPayments SDK Python is a library that allows integration with the SDK's of AddonPayments in a easy and fast way.
+There are two types of integration: HPP (Hosted Payment Page) and API.
 
 Features
 ~~~~~~~~

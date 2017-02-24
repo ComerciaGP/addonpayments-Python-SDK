@@ -24,7 +24,7 @@ class Settle(FieldsCommentMixin, ApiRequest):
         Override function to get necessary hash values for this request
         :return: list
         """
-        # Empty values represents amount  and currency
+        # Empty values represents amount and currency
         return [self.timestamp, self.merchantid, self.orderid, self.amount, '', '']
 
 
@@ -44,7 +44,7 @@ class Rebate(FieldsAmountMixin, FieldsCommentMixin, ApiRequest):
         Override function to get necessary hash values for this request
         :return: list
         """
-        # Empty values represents amount  and currency
+        # Empty values represents amount and currency
         return [self.timestamp, self.merchantid, self.orderid, '', '', '']
 
 
@@ -62,5 +62,5 @@ class Void(FieldsCommentMixin, ApiRequest):
         Override function to get necessary hash values for this request
         :return: list
         """
-        # Empty values represents amount  and currency
+        # Empty values represents amount and currency
         return [self.timestamp, self.merchantid, self.orderid, '', '', '']

@@ -14,19 +14,6 @@ class HppValidator(object):
     """
 
     @staticmethod
-    def flag(instance, attribute, value):
-        """
-        Validator for flag attributes, boolean but in XML are represented with '0' or '1'
-            * Type: Optional
-            * Format: True, False, 1, 0, '1', '0'
-        :param instance: object
-        :param attribute:
-        :param value:
-        """
-        if value not in [True, False, 1, 0, '1', '0']:
-            raise ValueError("{} must only True, False, 1, 0, '1' or '0'".format(attribute.name))
-
-    @staticmethod
     def country(instance, attribute, value):
         """
         Validator for currency attribute:
@@ -258,25 +245,3 @@ class HppValidator(object):
         Validate.validate_str(attribute.name, value)
         Validate.validate_length_range(attribute.name, value, 0, 30)
         Validate.validate_regex(attribute.name, value, r'^[a-zA-Z0-9\-\_\.]*$', 'alphanumeric and -_.')
-
-    @staticmethod
-    def hpp_select_stored_card(instance, attribute, value):
-        """
-        Validator for pmt_ref attribute:
-            * Type: Optional
-            * Format: A-Za-z0-9_-\
-            * Length: 0-30
-        :param instance: object
-        :param attribute:
-        :param value:
-        """
-        if not value:
-            return
-        Validate.validate_str(attribute.name, value)
-        Validate.validate_length_range(attribute.name, value, 1, 50)
-        Validate.validate_regex(
-            attribute.name,
-            value,
-            r'^[A-Za-z0-9\_\-\\ ]*$',
-            'alphanumeric and _-\\ and spaces'
-        )
