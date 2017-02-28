@@ -17,7 +17,7 @@ class GenerationUtils(object):
     def generate_hash(to_hash, secret):
         """
         This method takes the pre-built string of concatenated fields and the secret and returns the SHA-1 hash to be
-        placed in the request sent to HPP.
+        placed in the request sent to HPP or API.
         :param to_hash: string
         :param secret: string
         :return: string
