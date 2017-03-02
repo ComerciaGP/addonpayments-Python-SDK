@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 
+
 from addonpayments.utils import GenerationUtils
 
 

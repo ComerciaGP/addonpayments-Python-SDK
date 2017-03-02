@@ -37,6 +37,7 @@ class ApiClient(object):
             * Generate security hash
             * Parse request object to XML
             * Send POST request
+            * Receive AddonPayments response
             * Unparse XML response to ApiResponse
             * Validate hash
         :param request: ApiRequest

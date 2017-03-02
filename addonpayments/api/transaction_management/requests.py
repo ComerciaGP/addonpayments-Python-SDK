@@ -45,7 +45,7 @@ class Rebate(FieldsAmountMixin, FieldsCommentMixin, ApiRequest):
         :return: list
         """
         # Empty values represents amount and currency
-        return [self.timestamp, self.merchantid, self.orderid, '', '', '']
+        return [self.timestamp, self.merchantid, self.orderid, self.amount, self.currency, '']
 
 
 @attr.s

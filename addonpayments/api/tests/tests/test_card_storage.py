@@ -2,11 +2,12 @@
 
 import pytest
 
+from addonpayments.api.tests.conftest import BaseTest
 from addonpayments.api.card_storage.requests import (ReceiptInRequest, CardUpdateRequest, CardNewRequest,
                                                      CardCancelRequest, CardDccRateRequest, PayerNewRequest,
-                                                     RealVaultThreeDsVerifyEnrolled, PayerEditRequest)
+                                                     RealVaultThreeDsVerifyEnrolled, PayerEditRequest,
+                                                     AuthRequestWithRecurring)
 from addonpayments.api.client import ApiClient
-from addonpayments.api.tests.conftest import BaseTest
 
 
 class TestCardStorage(BaseTest):
@@ -268,3 +269,18 @@ class TestCardStorage(BaseTest):
         response = client.send(request)
         assert response.result == '00'
         # TODO delete payer (API not implemented)
+
+    @pytest.mark.skip(reason="Recurring not activated")
+    def test_auth_recurring(self, valid_card_with_cvn, recurring):
+        request = AuthRequestWithRecurring(
+            merchantid=self.merchant_id,
+            card=valid_card_with_cvn,
+            amount=100,
+            currency='EUR',
+            autosettle='1',
+            comments=['comment one', 'comment two'],
+            recurring=recurring
+        )
+        client = ApiClient(self.secret)
+        response = client.send(request)
+        assert response.result == '00'

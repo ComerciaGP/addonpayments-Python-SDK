@@ -35,4 +35,3 @@ API
     getting_started
     hpp_reference
     api_reference
-    utilities

@@ -2,9 +2,9 @@
 
 import pytest
 
-from addonpayments.api.client import ApiClient
-from addonpayments.api.dcc.requests import DccRate
 from addonpayments.api.tests.conftest import BaseTest
+from addonpayments.api.client import ApiClient
+from addonpayments.api.dcc.requests import DccRate, AuthRequestWithDccInfo
 
 
 class TestDcc(BaseTest):
@@ -17,6 +17,20 @@ class TestDcc(BaseTest):
             currency='EUR',
             dccinfo=dcc_info_with_rate_type,
             comments=['comment one', 'comment two']
+        )
+        client = ApiClient(self.secret)
+        response = client.send(request)
+        assert response.result == '00'
+
+    def test_auth_with_dcc_info(self, valid_card_with_cvn, dcc_info_with_amount):
+        request = AuthRequestWithDccInfo(
+            merchantid=self.merchant_id,
+            card=valid_card_with_cvn,
+            amount=100,
+            currency='EUR',
+            autosettle='1',
+            comments=['comment one', 'comment two'],
+            dccinfo=dcc_info_with_amount
         )
         client = ApiClient(self.secret)
         response = client.send(request)

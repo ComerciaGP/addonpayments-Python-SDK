@@ -3,6 +3,7 @@
 import attr
 from attr import ib as Field
 
+from addonpayments.api.payment.requests import AuthRequest
 from addonpayments.api.validators import FieldsValidator as Validator
 from addonpayments.api.common.requests import ApiRequest
 from addonpayments.api.elements import PaymentData, Payer, CardWithRef, CardRef, DccInfo, Recurring
@@ -17,10 +18,9 @@ class ReceiptInRequest(FieldsMixin, FieldsAmountMixin, ApiRequest):
     payerref = Field(default=None, validator=Validator.ref)
     paymentmethod = Field(default=None, validator=Validator.ref)
     paymentdata = Field(default=None, validator=attr.validators.instance_of(PaymentData))
-    recurring = Field(default=None, validator=attr.validators.optional(attr.validators.instance_of(Recurring)))
 
     request_type = 'receipt-in'
-    object_fields = ['paymentdata', 'recurring']
+    object_fields = ['paymentdata']
     flag_fields = ['autosettle']
     hash_fields = ['timestamp', 'merchantid', 'orderid', 'amount', 'currency', 'payerref']
 
@@ -151,3 +151,13 @@ class CardDccRateRequest(FieldsAmountMixin, FieldsCommentMixin, ApiRequest):
     request_type = 'realvault-dccrate'
     object_fields = ['dccinfo']
     hash_fields = ['timestamp', 'merchantid', 'orderid', 'amount', 'currency', 'payerref']
+
+
+@attr.s
+class AuthRequestWithRecurring(AuthRequest):
+    """
+    Class representing a authorisation with 3DS request to be sent to API.
+    """
+    recurring = Field(default=None, validator=attr.validators.instance_of(Recurring))
+
+    object_fields = ['card', 'recurring']

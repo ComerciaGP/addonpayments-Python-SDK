@@ -4,7 +4,7 @@ import attr
 from attr import ib as Field
 
 from addonpayments.api.common.requests import ApiRequest
-from addonpayments.api.elements import Card, Recurring, Mpi, DccInfoWithAmount
+from addonpayments.api.elements import Card
 from addonpayments.api.mixins import FieldsAmountMixin, FieldsMixin
 
 
@@ -15,12 +15,7 @@ class AuthRequest(FieldsMixin, FieldsAmountMixin, ApiRequest):
     """
     card = Field(default=None, validator=attr.validators.instance_of(Card))
 
-    # Optional fields for a different requests
-    recurring = Field(default=None, validator=attr.validators.optional(attr.validators.instance_of(Recurring)))
-    mpi = Field(default=None, validator=attr.validators.optional(attr.validators.instance_of(Mpi)))
-    dccinfo = Field(default=None, validator=attr.validators.optional(attr.validators.instance_of(DccInfoWithAmount)))
-
-    object_fields = ['card', 'recurring', 'mpi', 'dccinfo']
+    object_fields = ['card']
     flag_fields = ['autosettle']
     request_type = 'auth'
 
