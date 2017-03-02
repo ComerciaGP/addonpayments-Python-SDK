@@ -12,4 +12,4 @@ class PaymentRequest(HppRequest):
     """
 
     flag_fields = ['auto_settle_flag']
-    hash_values = ['timestamp', 'merchant_id', 'order_id', 'amount', 'currency']
+    hash_fields = ['timestamp', 'merchant_id', 'order_id', 'amount', 'currency']

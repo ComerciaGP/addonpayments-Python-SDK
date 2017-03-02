@@ -2,9 +2,10 @@
 
 import attr
 
-from addonpayments.logger import Logger
 from addonpayments.exceptions import SdkError
-from addonpayments.hpp.utils import JsonUtils, ValidationUtils
+from addonpayments.logger import Logger
+from addonpayments.utils import ValidationUtils
+from addonpayments.hpp.utils import JsonUtils
 from addonpayments.hpp.common.responses import HppResponse
 
 logger = Logger().get_logger(__name__)
@@ -132,7 +133,6 @@ class Hpp(object):
             error_msg = "Exception decoding HPP response"
             logger.error("{}: {}".format(error_msg, e))
             raise SdkError(error_msg, e)
-
         return ValidationUtils.validate_response(hpp_response, self.secret)
 
     def response_from_dict(self, response_dict):

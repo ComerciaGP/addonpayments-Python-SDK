@@ -25,7 +25,7 @@ class CardStorageRequest(HppRequest):
     pmt_ref = Field(default='', validator=Validator.pmt_ref)
 
     flag_fields = ['auto_settle_flag', 'card_storage_enable', 'offer_save_card', 'payer_exist']
-    hash_values = ['timestamp', 'merchant_id', 'order_id', 'amount', 'currency', 'payer_ref', 'pmt_ref']
+    hash_fields = ['timestamp', 'merchant_id', 'order_id', 'amount', 'currency', 'payer_ref', 'pmt_ref']
 
 
 @attr.s
@@ -72,4 +72,4 @@ class RecurringPaymentRequest(HppRequest):
     recurring_sequence = Field(default='', validator=CardStorageValidator.recurring_sequence)
 
     flag_fields = ['auto_settle_flag', 'card_storage_enable', 'offer_save_card', 'payer_exist']
-    hash_values = ['timestamp', 'merchant_id', 'order_id', 'amount', 'currency', 'payer_ref', 'pmt_ref']
+    hash_fields = ['timestamp', 'merchant_id', 'order_id', 'amount', 'currency', 'payer_ref', 'pmt_ref']

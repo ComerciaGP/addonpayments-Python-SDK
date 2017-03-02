@@ -22,7 +22,7 @@ class ReceiptInRequest(FieldsMixin, FieldsAmountMixin, ApiRequest):
     request_type = 'receipt-in'
     object_fields = ['paymentdata', 'recurring']
     flag_fields = ['autosettle']
-    hash_values = ['timestamp', 'merchantid', 'orderid', 'amount', 'currency', 'payerref']
+    hash_fields = ['timestamp', 'merchantid', 'orderid', 'amount', 'currency', 'payerref']
 
 
 @attr.s
@@ -34,7 +34,7 @@ class RealVaultThreeDsVerifyEnrolled(FieldsAmountMixin, ApiRequest):
     paymentmethod = Field(default=None, validator=Validator.ref)
 
     request_type = 'realvault-3ds-verifyenrolled'
-    hash_values = ['timestamp', 'merchantid', 'orderid', 'amount', 'currency', 'payerref']
+    hash_fields = ['timestamp', 'merchantid', 'orderid', 'amount', 'currency', 'payerref']
 
 
 @attr.s
@@ -150,4 +150,4 @@ class CardDccRateRequest(FieldsAmountMixin, FieldsCommentMixin, ApiRequest):
 
     request_type = 'realvault-dccrate'
     object_fields = ['dccinfo']
-    hash_values = ['timestamp', 'merchantid', 'orderid', 'amount', 'currency', 'payerref']
+    hash_fields = ['timestamp', 'merchantid', 'orderid', 'amount', 'currency', 'payerref']

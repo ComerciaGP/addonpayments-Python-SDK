@@ -21,7 +21,7 @@ class ApiRequest(HashMixin, XmlMixin):
     Subclasses values (fields to be defined in the subclasses):
         request_type            Type of the Addonpayments request (auth, receipt-in, payer-new, card-new, ...)
     Mixin HashMixin attributes:
-        hash_values             Hash a string made up of the request values
+        hash_fields             Hash a string made up of the request values
     Mixin XMLMixin attributes:
         xml_root_tag            If the object is a Request the root tag is <request attributes></ request>.
         xml_root_attributes     Normalized request objects always have timestamp and type attributes in the root tag
@@ -59,3 +59,13 @@ class ApiRequest(HashMixin, XmlMixin):
             self.timestamp = gen_utl.generate_timestamp()
         if not self.orderid:
             self.orderid = gen_utl.generate_order_id()
+
+    def hash(self, secret):
+        """
+        Set and validate sha1hash
+        :param secret: string
+        """
+        self.sha1hash = self.generate_hash(secret)
+        # Validate hash
+        attr.validate(self)
+        return self.sha1hash

@@ -43,6 +43,31 @@ def valid_card_with_ref():
 
 
 @pytest.fixture()
+def declined_card():
+    card = Card(type='VISA', number='4000120000001154', expdate='1220', chname='card owner')
+    yield card
+
+
+@pytest.fixture()
+def declined_card_with_cvn():
+    cvn = Cvn(number='123', presind=1)
+    card = CardWithCvn(type='VISA', number='4000120000001154', expdate='1220', cvn=cvn, chname='card owner')
+    yield card
+
+
+@pytest.fixture()
+def declined_card_with_ref():
+    yield CardWithRef(
+        type='VISA',
+        number='4000120000001154',
+        expdate='1220',
+        chname='new card owner',
+        ref=BaseTest().card_ref,
+        payerref=BaseTest().payer_ref
+    )
+
+
+@pytest.fixture()
 def card_ref():
     yield CardRef(ref=BaseTest().card_ref, payerref=BaseTest().payer_ref)
 

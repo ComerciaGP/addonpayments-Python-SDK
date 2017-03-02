@@ -30,7 +30,7 @@ class XmlUtils(object):
         return xml
 
     @staticmethod
-    def from_xml_response(xml):
+    def from_xml_api_response(xml):
         """
         Method parse XML to dict.
         :param xml: string
@@ -39,7 +39,8 @@ class XmlUtils(object):
         logger.debug("Parsing XML response to dict")
         try:
             resp = json.loads(json.dumps(xmltodict.parse(xml)))
-            response = resp['response']
+            resp['response']
+            response = {key.replace('@', ''): value for key, value in resp['response'].items()}
         except Exception as e:
             error_msg = "Error parsing response XML"
             logger.error("{}: {}".format(error_msg, e))

@@ -5,6 +5,12 @@ import uuid
 import hashlib
 from datetime import datetime
 
+from addonpayments.exceptions import SdkError
+from addonpayments.logger import Logger
+
+
+logger = Logger().get_logger(__name__)
+
 
 class GenerationUtils(object):
     """
@@ -41,6 +47,25 @@ class GenerationUtils(object):
         :return: string
         """
         return datetime.now().strftime(self.date_format)
+
+
+class ValidationUtils(object):
+    """
+    Class validates HPP and API response objects.
+    """
+
+    @staticmethod
+    def validate_response(sdk_response, secret):
+        """
+        Method validates HPP and API response hash.
+        :param sdk_response: SdkResponse
+        :param secret: string
+        """
+        if sdk_response.sha1hash and not sdk_response.is_hash_valid(secret):
+            error_msg = "SdkResponse contains an invalid security hash"
+            logger.error(error_msg)
+            raise SdkError(error_msg)
+        return sdk_response
 
 
 class ValidateUtils(object):

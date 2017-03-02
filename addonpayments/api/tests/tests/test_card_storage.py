@@ -18,7 +18,7 @@ class TestCardStorage(BaseTest):
             payer=payer
         )
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
         # TODO delete payer (API not implemented)
 
     def test_payer_edit(self, payer):
@@ -30,7 +30,7 @@ class TestCardStorage(BaseTest):
         )
         response_new = client.send(request_new)
         # Because it can not be removed, the payer may exist (501)
-        assert response_new['result'] == '00' or response_new['result'] == '501'
+        assert response_new.result == '00' or response_new.result == '501'
 
         payer.firstname = 'Updated {}'.format(payer.firstname)
         request = PayerEditRequest(
@@ -39,7 +39,7 @@ class TestCardStorage(BaseTest):
             comments=['comment one', 'comment two'],
         )
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
         # TODO delete payer (API not implemented)
 
     @pytest.mark.skip(reason="MPI for client not configured")
@@ -52,7 +52,7 @@ class TestCardStorage(BaseTest):
         )
         response_new_payer = client.send(request_new_payer)
         # Because it can not be removed, the payer may exist (501)
-        assert response_new_payer['result'] == '00' or response_new_payer['result'] == '501'
+        assert response_new_payer.result == '00' or response_new_payer.result == '501'
         # Ensure that the payer reference is the correct
         valid_card_with_ref.payerref = payer.ref
 
@@ -62,7 +62,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response_new = client.send(request_new)
-        assert response_new['result'] == '00'
+        assert response_new.result == '00'
 
         request = RealVaultThreeDsVerifyEnrolled(
             merchantid=self.merchant_id,
@@ -72,7 +72,7 @@ class TestCardStorage(BaseTest):
             paymentmethod=valid_card_with_ref.ref,
         )
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
 
         request_cancel = CardCancelRequest(
             merchantid=self.merchant_id,
@@ -80,7 +80,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response_cancel = client.send(request_cancel)
-        assert response_cancel['result'] == '00'
+        assert response_cancel.result == '00'
         # TODO delete payer (API not implemented)
 
     def test_card_new(self, payer, valid_card_with_ref):
@@ -92,7 +92,7 @@ class TestCardStorage(BaseTest):
         )
         response_new_payer = client.send(request_new_payer)
         # Because it can not be removed, the payer may exist (501)
-        assert response_new_payer['result'] == '00' or response_new_payer['result'] == '501'
+        assert response_new_payer.result == '00' or response_new_payer.result == '501'
         # Ensure that the payer reference is the correct
         valid_card_with_ref.payerref = payer.ref
 
@@ -102,7 +102,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response_new = client.send(request_new)
-        assert response_new['result'] == '00'
+        assert response_new.result == '00'
 
         request_cancel = CardCancelRequest(
             merchantid=self.merchant_id,
@@ -110,7 +110,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response_cancel = client.send(request_cancel)
-        assert response_cancel['result'] == '00'
+        assert response_cancel.result == '00'
         # TODO delete payer (API not implemented)
 
     def test_receipt_in(self, payment_data, payer, valid_card_with_ref):
@@ -122,7 +122,7 @@ class TestCardStorage(BaseTest):
         )
         response_new_payer = client.send(request_new_payer)
         # Because it can not be removed, the payer may exist (501)
-        assert response_new_payer['result'] == '00' or response_new_payer['result'] == '501'
+        assert response_new_payer.result == '00' or response_new_payer.result == '501'
         # Ensure that the payer reference is the correct
         valid_card_with_ref.payerref = payer.ref
 
@@ -132,7 +132,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response_new = client.send(request_new)
-        assert response_new['result'] == '00'
+        assert response_new.result == '00'
 
         request = ReceiptInRequest(
             merchantid=self.merchant_id,
@@ -145,7 +145,7 @@ class TestCardStorage(BaseTest):
             paymentdata=payment_data
         )
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
 
         request_cancel = CardCancelRequest(
             merchantid=self.merchant_id,
@@ -153,7 +153,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response_cancel = client.send(request_cancel)
-        assert response_cancel['result'] == '00'
+        assert response_cancel.result == '00'
         # TODO delete payer (API not implemented)
 
     def test_card_update(self, payer, valid_card_with_ref):
@@ -165,7 +165,7 @@ class TestCardStorage(BaseTest):
         )
         response_new_payer = client.send(request_new_payer)
         # Because it can not be removed, the payer may exist (501)
-        assert response_new_payer['result'] == '00' or response_new_payer['result'] == '501'
+        assert response_new_payer.result == '00' or response_new_payer.result == '501'
         # Ensure that the payer reference is the correct
         valid_card_with_ref.payerref = payer.ref
 
@@ -175,7 +175,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response_new = client.send(request_new)
-        assert response_new['result'] == '00'
+        assert response_new.result == '00'
 
         valid_card_with_ref.chname = 'update card owner'
 
@@ -185,7 +185,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
 
         request_cancel = CardCancelRequest(
             merchantid=self.merchant_id,
@@ -193,7 +193,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response_cancel = client.send(request_cancel)
-        assert response_cancel['result'] == '00'
+        assert response_cancel.result == '00'
         # TODO delete payer (API not implemented)
 
     def test_card_cancel(self, payer, valid_card_with_ref):
@@ -205,7 +205,7 @@ class TestCardStorage(BaseTest):
         )
         response_new_payer = client.send(request_new_payer)
         # Because it can not be removed, the payer may exist (501)
-        assert response_new_payer['result'] == '00' or response_new_payer['result'] == '501'
+        assert response_new_payer.result == '00' or response_new_payer.result == '501'
         # Ensure that the payer reference is the correct
         valid_card_with_ref.payerref = payer.ref
 
@@ -215,7 +215,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response_new = client.send(request_new)
-        assert response_new['result'] == '00'
+        assert response_new.result == '00'
 
         request = CardCancelRequest(
             merchantid=self.merchant_id,
@@ -223,7 +223,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
         # TODO delete payer (API not implemented)
 
     @pytest.mark.skip(reason="Dcc rate not allowed")
@@ -236,7 +236,7 @@ class TestCardStorage(BaseTest):
         )
         response_new_payer = client.send(request_new_payer)
         # Because it can not be removed, the payer may exist (501)
-        assert response_new_payer['result'] == '00' or response_new_payer['result'] == '501'
+        assert response_new_payer.result == '00' or response_new_payer.result == '501'
         # Ensure that the payer reference is the correct
         valid_card_with_ref.payerref = payer.ref
 
@@ -246,7 +246,7 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response_new = client.send(request_new)
-        assert response_new['result'] == '00'
+        assert response_new.result == '00'
 
         request = CardDccRateRequest(
             merchantid=self.merchant_id,
@@ -258,7 +258,7 @@ class TestCardStorage(BaseTest):
             dccinfo=dcc_info
         )
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
 
         request = CardCancelRequest(
             merchantid=self.merchant_id,
@@ -266,5 +266,5 @@ class TestCardStorage(BaseTest):
             card=valid_card_with_ref
         )
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
         # TODO delete payer (API not implemented)

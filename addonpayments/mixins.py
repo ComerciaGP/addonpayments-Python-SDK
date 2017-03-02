@@ -1,7 +1,5 @@
 # -*- encoding: utf-8 -*-
 
-import attr
-
 from addonpayments.utils import GenerationUtils
 
 
@@ -9,30 +7,36 @@ class HashMixin(object):
     """
     This mixin generate hash for every request
     Attributes:
-        hash_values     Hash a string made up of the request values
+        hash_fields     Hash a string made up of the request values
     """
-    hash_values = []
+    hash_fields = []
 
     def get_hash_values(self):
         """
         This method return a list values to generate hash
         :return: list
         """
-        return [getattr(self, f) for f in self.hash_values]
+        hash_values = []
+        for f in self.hash_fields:
+            try:
+                if getattr(self, f) is None:
+                    hash_values.append('')
+                else:
+                    hash_values.append(getattr(self, f))
+            except AttributeError:
+                hash_values.append('')
+        return hash_values
 
-    def hash(self, secret):
+    def generate_hash(self, secret):
         """
-        Creates the security hash from a number of fields and the shared secret.
-        :param secret: string
+        Generate the security hash from a number of fields and the shared secret.
+        :rtype: object
         """
         # Generate string to hash from fields values list
         str_hash = '.'.join(self.get_hash_values())
         # Generate HASH
         gen_utl = GenerationUtils()
-        self.sha1hash = gen_utl.generate_hash(str_hash, secret)
-        # Validate hash
-        attr.validate(self)
-        return self.sha1hash
+        return gen_utl.generate_hash(str_hash, secret)
 
 
 class DictMixin(object):

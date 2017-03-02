@@ -80,3 +80,13 @@ class HppRequest(HashMixin, DictMixin):
             if result_value:
                 result[key.upper()] = result_value
         return result
+
+    def hash(self, secret):
+        """
+        Set and validate sha1hash
+        :param secret: string
+        """
+        self.sha1hash = self.generate_hash(secret)
+        # Validate hash
+        attr.validate(self)
+        return self.sha1hash

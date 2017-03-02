@@ -7,6 +7,8 @@ from decouple import config
 from addonpayments.exceptions import SdkError
 from addonpayments.logger import Logger
 from addonpayments.api.utils import XmlUtils
+from addonpayments.utils import ValidationUtils
+from addonpayments.api.common.responses import ApiResponse
 
 logger = Logger().get_logger(__name__)
 
@@ -28,15 +30,18 @@ class ApiClient(object):
             'Content-Type': 'application/xml'
         }
 
-    def send(self, request):
+    def send(self, request, response_validation=True):
         """
-        Sends the request to Addonpayments.
+        Sends the request to AddonPayments.
         Carries out the following actions:
             * Generate security hash
             * Parse request object to XML
             * Send POST request
-            * Unparse XML response to dict
-        :return: dict
+            * Unparse XML response to ApiResponse
+            * Validate hash
+        :param request: ApiRequest
+        :param response_validation: bool
+        :return: ApiResponse
         """
         # generate hash
         logger.debug("Generating hash.")
@@ -54,4 +59,9 @@ class ApiClient(object):
             error_msg = "POST requests error"
             logger.error("{}: {}".format(error_msg))
             raise SdkError(error_msg, e)
-        return XmlUtils.from_xml_response(result.text)
+
+        normalized_dict = XmlUtils.from_xml_api_response(result.text)
+        api_response = ApiResponse(**normalized_dict)
+        if response_validation:
+            return ValidationUtils.validate_response(api_response, self.secret)
+        return api_response

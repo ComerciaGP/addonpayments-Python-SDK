@@ -3,33 +3,12 @@
 import base64
 import json
 
-from addonpayments.logger import Logger
-from addonpayments.exceptions import SdkError
 from addonpayments.hpp.card_storage.requests import CardStorageRequest
 from addonpayments.hpp.payment.requests import PaymentRequest
 from addonpayments.hpp.common.responses import HppResponse
-
+from addonpayments.logger import Logger
 
 logger = Logger().get_logger(__name__)
-
-
-class ValidationUtils(object):
-    """
-    Class validates HPP request and response objects.
-    """
-
-    @staticmethod
-    def validate_response(hpp_response, secret):
-        """
-        Method validates HPP response hash.
-        :param hpp_response:  HppResponse
-        :param secret: string
-        """
-        if not hpp_response.is_hash_valid(secret):
-            error_msg = "HppResponse contains an invalid security hash"
-            logger.error(error_msg)
-            raise SdkError(error_msg)
-        return hpp_response
 
 
 class JsonUtils(object):

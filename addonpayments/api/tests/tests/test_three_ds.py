@@ -19,7 +19,7 @@ class TestThreeDs(BaseTest):
         )
         client = ApiClient(self.secret)
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
 
     @pytest.mark.skip(reason="MPI for client not configured")
     def test_three_ds_verify_sig(self):
@@ -30,4 +30,4 @@ class TestThreeDs(BaseTest):
         )
         client = ApiClient(self.secret)
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'

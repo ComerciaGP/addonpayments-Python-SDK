@@ -24,7 +24,7 @@ class Settle(FieldsCommentMixin, ApiRequest):
         Override function to get necessary hash values for this request
         :return: list
         """
-        # Empty values represents amount and currency
+        # Empty values represents currency and card number
         return [self.timestamp, self.merchantid, self.orderid, self.amount, '', '']
 
 

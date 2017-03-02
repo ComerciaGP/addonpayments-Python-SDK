@@ -20,4 +20,4 @@ class TestDcc(BaseTest):
         )
         client = ApiClient(self.secret)
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'

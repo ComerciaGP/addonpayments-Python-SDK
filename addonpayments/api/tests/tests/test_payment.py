@@ -19,7 +19,20 @@ class TestPayment(BaseTest):
         )
         client = ApiClient(self.secret)
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
+
+    def test_auth_declined(self, declined_card_with_cvn):
+        request = AuthRequest(
+            merchantid=self.merchant_id,
+            card=declined_card_with_cvn,
+            amount=100,
+            currency='EUR',
+            autosettle='1',
+            comments=['comment one', 'comment two']
+        )
+        client = ApiClient(self.secret)
+        response = client.send(request)
+        assert response.result == '101'
 
     @pytest.mark.skip(reason="Recurring not activated")
     def test_auth_recurring(self, valid_card_with_cvn, recurring):
@@ -34,7 +47,7 @@ class TestPayment(BaseTest):
         )
         client = ApiClient(self.secret)
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
 
     def test_auth_with_three_ds(self, valid_card_with_cvn, mpi):
         request = AuthRequest(
@@ -48,7 +61,7 @@ class TestPayment(BaseTest):
         )
         client = ApiClient(self.secret)
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
 
     def test_auth_with_dcc_info(self, valid_card_with_cvn, dcc_info_with_amount):
         request = AuthRequest(
@@ -62,4 +75,4 @@ class TestPayment(BaseTest):
         )
         client = ApiClient(self.secret)
         response = client.send(request)
-        assert response['result'] == '00'
+        assert response.result == '00'
