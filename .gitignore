@@ -63,3 +63,8 @@ target/
 
 # Python decouple settings file
 settings.ini
+
+log/
+py27/
+py35/
+flake8/
