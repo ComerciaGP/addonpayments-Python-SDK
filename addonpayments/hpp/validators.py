@@ -181,7 +181,7 @@ class HppValidator(object):
         """
         Validator for supplementary_data attribute (this field can be a dictionary or a string):
             * Type: Optional
-            * Format: a-zA-Z0-9{}'",+“”.-_&\/@!?%()*:£$&€#[]|=
+            * Format: a-zA-Z0-9{}'",+“”.-_&\/@!?%()*:£$&€#[]|= and spaces
             * Length: 0-60
         :param instance: object
         :param attribute:
@@ -199,8 +199,8 @@ class HppValidator(object):
         Validate.validate_regex(
             attribute.name,
             value,
-            r'^[a-zA-Z0-9{}\'",+“”.\-\_&\\/@!?%()*:£$&€#\[\]\|=]*$',
-            'alphanumeric and \'",+“”.-_&\\/@!?%()*:£$&€#[]|='
+            r'^[a-zA-Z0-9 {}\'",+“”.\-\_&\\/@!?%()*:£$&€#\[\]\|=]*$',
+            'alphanumeric and \'",+“”.-_&\\/@!?%()*:£$&€#[]|= and spaces'
         )
 
     @staticmethod
