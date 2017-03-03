@@ -3,6 +3,8 @@
 import base64
 import json
 
+import six
+
 from addonpayments.hpp.card_storage.requests import CardStorageRequest
 from addonpayments.hpp.payment.requests import PaymentRequest
 from addonpayments.hpp.common.responses import HppResponse
@@ -92,7 +94,8 @@ class JsonUtils(object):
         :return: dict
         """
         for key, value in hpp_dict.items():
-            b64_value = base64.b64encode(bytes(str(value), charset))
+            b64_value = base64.b64encode(six.binary_type(str(value).encode(charset)))
+            # b64_value = base64.b64encode(bytes(str(value), charset))
             hpp_dict[key] = b64_value.decode(charset)
         return hpp_dict
 
@@ -104,7 +107,11 @@ class JsonUtils(object):
         :param charset: string
         """
         for key, value in hpp_dict.items():
-            hpp_dict[key] = str(base64.b64decode(value), charset)
+            try:
+                hpp_dict[key] = str(base64.b64decode(value), charset)
+            except TypeError:
+                hpp_dict[key] = str(base64.b64decode(value)).encode(charset)
+                # hpp_dict[key] = six.text_type(base64.b64decode(value)).encode(charset)
         return hpp_dict
 
     @staticmethod

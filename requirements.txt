@@ -1,4 +1,3 @@
--e git+git@gitlab.apsl.net:addonpayments/addonpayments-sdk-python.git@30e6a88c1ef974dd3ad9af7e00020728b65b995c#egg=addonpayments_sdk_python
 apipkg==1.4
 appdirs==1.4.2
 attr==0.2.0
