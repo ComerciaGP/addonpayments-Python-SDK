@@ -1,5 +1,8 @@
 # -*- encoding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
+import six
 import xmltodict
 import json
 
@@ -40,7 +43,7 @@ class XmlUtils(object):
         try:
             resp = json.loads(json.dumps(xmltodict.parse(xml)))
             resp['response']
-            response = {key.replace('@', ''): value for key, value in resp['response'].items()}
+            response = {key.replace('@', ''): value for key, value in six.iteritems(resp['response'])}
         except Exception as e:
             error_msg = "Error parsing response XML"
             logger.error("{}: {}".format(error_msg, e))

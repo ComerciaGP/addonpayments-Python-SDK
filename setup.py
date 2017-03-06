@@ -51,6 +51,7 @@ setup(
         'attrs',
         'xmltodict',
         'requests',
+        'future'
     ],
     url='https://gitlab.apsl.net/addonpayments/addonpayments-sdk-python',
     author=get_author('addonpayments'),

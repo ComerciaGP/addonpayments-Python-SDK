@@ -1,5 +1,9 @@
 # -*- encoding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
+import six
+
 from addonpayments.utils import ValidateUtils as Validate
 
 
@@ -192,10 +196,10 @@ class HppValidator(object):
         try:
             Validate.validate_dict(attribute.name, value)
             # If value is a dict, convert keys and values to string
-            value = ''.join(['{0}{1}'.format(k, v) for k, v in value.items()])
+            value = ''.join(['{0}{1}'.format(k, v) for k, v in six.iteritems(value)])
         except ValueError:
             Validate.validate_str(attribute.name, value)
-        Validate.validate_length_range(attribute.name, str(value), 0, 255)
+        Validate.validate_length_range(attribute.name, six.text_type(value), 0, 255)
         Validate.validate_regex(
             attribute.name,
             value,

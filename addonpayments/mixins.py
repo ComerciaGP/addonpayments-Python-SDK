@@ -1,5 +1,8 @@
 # -*- encoding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
+import six
 
 from addonpayments.utils import GenerationUtils
 
@@ -68,4 +71,6 @@ class DictMixin(object):
         Return the class attributes in a dictionary
         :return: dict
         """
-        return {key: self.set_flags(key, value) for key, value in self.__dict__.items() if self.set_flags(key, value)}
+        return {
+            key: self.set_flags(key, value) for key, value in six.iteritems(self.__dict__) if self.set_flags(key, value)
+        }

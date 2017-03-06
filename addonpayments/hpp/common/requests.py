@@ -1,6 +1,9 @@
 # -*- encoding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
 import attr
+import six
 from attr import ib as Field
 
 from addonpayments.mixins import DictMixin, HashMixin
@@ -65,20 +68,20 @@ class HppRequest(HashMixin, DictMixin):
         :return: dict
         """
         result = {}
-        for key, value in self.__dict__.items():
+        for key, value in six.iteritems(self.__dict__):
             # Add supplementary data into dict
             if key == 'supplementary_data':
                 try:
-                    for key_supp, value_supp in self.supplementary_data.items():
-                        if key_supp not in self.__dict__.keys():
+                    for key_supp, value_supp in six.iteritems(self.supplementary_data):
+                        if key_supp not in six.iterkeys(self.__dict__):
                             result[key_supp] = value_supp
                 except AttributeError:
                     result[key.upper()] = value
-
-            # Parse boolean fields to str '1' (True) or '0' (False)
-            result_value = self.set_flags(key, value)
-            if result_value:
-                result[key.upper()] = result_value
+            else:
+                # Parse boolean fields to str '1' (True) or '0' (False)
+                result_value = self.set_flags(key, value)
+                if result_value:
+                    result[key.upper()] = result_value
         return result
 
     def hash(self, secret):

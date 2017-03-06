@@ -1,6 +1,9 @@
 # -*- encoding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
 import attr
+import six
 from attr import ib as Field
 
 from addonpayments.mixins import DictMixin
@@ -82,7 +85,7 @@ class XmlMixin(DictMixin):
         :return: dict
         """
         result = {}
-        for key, value in self.to_dict().items():
+        for key, value in six.iteritems(self.to_dict()):
             # This field (key) is an object
             if key in self.object_fields:
                 result.update(value.normalize_xml())

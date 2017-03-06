@@ -1,6 +1,9 @@
 # -*- encoding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
 import attr
+import six
 
 from addonpayments.exceptions import SdkError
 from addonpayments.logger import Logger
@@ -143,7 +146,7 @@ class Hpp(object):
         :return:
         """
         logger.info("Converting dict to HppResponse.")
-        normalized_dict = {key.lower(): value for key, value in response_dict.items()}
+        normalized_dict = {key.lower(): value for key, value in six.iteritems(response_dict)}
         hpp_response = HppResponse(**normalized_dict)
 
         return ValidationUtils.validate_response(hpp_response, self.secret)
