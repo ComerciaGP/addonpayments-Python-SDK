@@ -203,8 +203,8 @@ class HppValidator(object):
         Validate.validate_regex(
             attribute.name,
             value,
-            r'^[a-zA-Z0-9{}\'",+“”.\-\_&\\/@!?%()*:£$&€#\[\]\|=]*$',
-            'alphanumeric and \'",+“”.-_&\\/@!?%()*:£$&€#[]|='
+            r'^[a-zA-Z0-9 {}\'",+“”.\-\_&\\/@!?%()*:£$&€#\[\]\|=]*$',
+            'alphanumeric and \'",+“”.-_&\\/@!?%()*:£$&€#[]|= and spaces'
         )
 
     @staticmethod
