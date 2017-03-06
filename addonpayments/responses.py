@@ -1,5 +1,9 @@
 # -*- encoding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
+import six
+
 from addonpayments.mixins import HashMixin
 
 
@@ -30,7 +34,7 @@ class SdkResponse(HashMixin):
         return the data response as a dictionary
         :return: dict
         """
-        return {key: value for key, value in self.__dict__.items()}
+        return {key: value for key, value in six.iteritems(self.__dict__)}
 
     def hash(self, secret):
         """

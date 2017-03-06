@@ -1,6 +1,9 @@
 # -*- encoding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
 import re
+import six
 import uuid
 import hashlib
 from datetime import datetime
@@ -29,9 +32,9 @@ class GenerationUtils(object):
         :return: string
         """
         # Step 1: With the SHA-1 algorithm, obtain the hash value of a string composed of the requested values.
-        to_hash_first_pass = hashlib.sha1(bytes("{}".format(to_hash), encoding="UTF-8")).hexdigest()
+        to_hash_first_pass = hashlib.sha1(six.binary_type(to_hash.encode('utf-8'))).hexdigest()
         # Step 2: Concatenate the hash value chain with the shared secret.
-        return hashlib.sha1(bytes("{}.{}".format(to_hash_first_pass, secret), encoding="UTF-8")).hexdigest()
+        return hashlib.sha1(six.binary_type("{}.{}".format(to_hash_first_pass, secret).encode('utf-8'))).hexdigest()
 
     def generate_order_id(self):
         """
@@ -43,7 +46,7 @@ class GenerationUtils(object):
 
     def generate_timestamp(self):
         """
-        Generate the current datetimestamp in the string format (YYYYMMDDHHSS) required in a request.
+        Generate the current date timestamp in the string format (YYYYMMDDHHSS) required in a request.
         :return: string
         """
         return datetime.now().strftime(self.date_format)
@@ -90,7 +93,7 @@ class ValidateUtils(object):
         :param name: string
         :param value:
         """
-        if not isinstance(value, str):
+        if not isinstance(value, six.string_types):
             raise ValueError("{} must be string".format(name))
 
     @staticmethod

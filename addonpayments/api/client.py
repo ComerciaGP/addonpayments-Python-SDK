@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
 import requests
 import attr
 from decouple import config
@@ -58,7 +60,7 @@ class ApiClient(object):
             result = requests.post(self.endpoint, data=xml.encode(self.encoding_charset), headers=self.headers)
         except requests.exceptions.RequestException as e:
             error_msg = "POST requests error"
-            logger.error("{}: {}".format(error_msg))
+            logger.error(error_msg)
             raise SdkError(error_msg, e)
 
         normalized_dict = XmlUtils.from_xml_api_response(result.text)

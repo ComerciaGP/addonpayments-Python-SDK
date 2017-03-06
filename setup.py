@@ -1,6 +1,8 @@
-import os
-import re
-import codecs
+# -*- encoding: utf-8 -*-
+
+# import os
+# import re
+# import codecs
 
 try:
     from setuptools import setup, find_packages
@@ -12,24 +14,27 @@ def get_version(package):
     """
     Return package version as listed in `__version__` in `init.py`.
     """
-    init_py = codecs.open(os.path.join(package, '__init__.py'), encoding='utf-8').read()
-    return re.search("^__version__ = ['\"]([^'\"]+)['\"]", init_py, re.MULTILINE).group(1)
+    return "0.1"
+    # init_py = codecs.open(os.path.abspath(os.path.join(package, '__init__.py')), encoding='utf-8').read()
+    # return re.search("^__version__ = ['\"]([^'\"]+)['\"]", init_py, re.MULTILINE).group(1)
 
 
 def get_author(package):
     """
     Return package author as listed in `__author__` in `init.py`.
     """
-    init_py = codecs.open(os.path.join(package, '__init__.py'), encoding='utf-8').read()
-    return re.search("^__author__ = ['\"]([^'\"]+)['\"]", init_py, re.MULTILINE).group(1)
+    return "Marc Galofré"
+    # init_py = codecs.open(os.path.abspath(os.path.join(package, '__init__.py')), encoding='utf-8').read()
+    # return re.search("^__author__ = ['\"]([^'\"]+)['\"]", init_py, re.MULTILINE).group(1)
 
 
 def get_email(package):
     """
     Return package email as listed in `__email__` in `init.py`.
     """
-    init_py = codecs.open(os.path.join(package, '__init__.py'), encoding='utf-8').read()
-    return re.search("^__email__ = ['\"]([^'\"]+)['\"]", init_py, re.MULTILINE).group(1)
+    return "mgalofre@apsl.net"
+    # init_py = codecs.open(os.path.abspath(os.path.join(package, '__init__.py')), encoding='utf-8').read()
+    # return re.search("^__email__ = ['\"]([^'\"]+)['\"]", init_py, re.MULTILINE).group(1)
 
 
 setup(
@@ -39,12 +44,14 @@ setup(
     include_package_data=True,
     keywords="addonpayments sdk python hpp api",
     description='A SDK Addonpayments implemented with Python.',
-    long_description=codecs.open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='utf-8').read(),
+    # long_description=codecs.open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='utf-8').read(),
+    long_description='',
     install_requires=[
         'python-decouple',
         'attrs',
         'xmltodict',
         'requests',
+        'future'
     ],
     url='https://gitlab.apsl.net/addonpayments/addonpayments-sdk-python',
     author=get_author('addonpayments'),

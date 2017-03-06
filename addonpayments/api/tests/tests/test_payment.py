@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
 from addonpayments.api.tests.conftest import BaseTest
 from addonpayments.api.client import ApiClient
 from addonpayments.api.payment.requests import AuthRequest

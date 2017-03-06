@@ -1,7 +1,11 @@
 # -*- encoding: utf-8 -*-
 
+from __future__ import absolute_import, unicode_literals
+
 import base64
 import json
+
+import six
 
 from addonpayments.hpp.card_storage.requests import CardStorageRequest
 from addonpayments.hpp.payment.requests import PaymentRequest
@@ -39,7 +43,7 @@ class JsonUtils(object):
         :param encoded: bool
         :return: HppRequest
         """
-        obj_request = json.load(json_hpp_request)
+        obj_request = json.loads(json_hpp_request)
         if encoded:
             obj_request = JsonUtils.decode(obj_request, charset)
 
@@ -49,7 +53,8 @@ class JsonUtils(object):
 
         dict_request = {}
         supplementary_data = {}
-        for key, value in obj_request.items():
+
+        for key, value in six.iteritems(obj_request):
             key_hpp = key.lower()
             is_supplementary_data = False
             if is_card_storage:
@@ -59,7 +64,7 @@ class JsonUtils(object):
                 if not hasattr(PaymentRequest, key_hpp):
                     is_supplementary_data = True
             if is_supplementary_data:
-                supplementary_data[key_hpp] = value
+                supplementary_data[key] = value
             else:
                 dict_request[key_hpp] = value
         if supplementary_data:
@@ -91,8 +96,8 @@ class JsonUtils(object):
         :param charset: string
         :return: dict
         """
-        for key, value in hpp_dict.items():
-            b64_value = base64.b64encode(bytes(str(value), charset))
+        for key, value in six.iteritems(hpp_dict):
+            b64_value = base64.b64encode(six.binary_type(six.text_type(value).encode(charset)))
             hpp_dict[key] = b64_value.decode(charset)
         return hpp_dict
 
@@ -103,8 +108,8 @@ class JsonUtils(object):
         :param hpp_dict: dict
         :param charset: string
         """
-        for key, value in hpp_dict.items():
-            hpp_dict[key] = str(base64.b64decode(value), charset)
+        for key, value in six.iteritems(hpp_dict):
+            hpp_dict[key] = six.text_type(base64.b64decode(value), charset)
         return hpp_dict
 
     @staticmethod
@@ -114,5 +119,5 @@ class JsonUtils(object):
         :type obj_response: dict
         :return: HppResponse
         """
-        obj_response = {key.lower(): value for key, value in obj_response.items()}
+        obj_response = {key.lower(): value for key, value in six.iteritems(obj_response)}
         return HppResponse(**obj_response)
