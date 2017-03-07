@@ -38,5 +38,5 @@ def hpp_request_storage_enabled():
     }
 
 
-def sample_path(sample):
+def get_sample_path(sample):
     return os.path.join(os.path.dirname(os.path.abspath(__file__)), sample)

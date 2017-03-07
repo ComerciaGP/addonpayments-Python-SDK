@@ -12,9 +12,9 @@ class TestGenerationUtils:
         """
         Test Hash generation success case.
         """
-        test_string = "20120926112654.thestore.ORD453-11.00.Successful.3737468273643.79347"
-        secret = "mysecret"
-        expected_result = "368df010076481d47a21e777871012b62b976339"
+        test_string = '20120926112654.thestore.ORD453-11.00.Successful.3737468273643.79347'
+        secret = 'mysecret'
+        expected_result = '368df010076481d47a21e777871012b62b976339'
         result = GenerationUtils.generate_hash(test_string, secret)
         assert expected_result == result
 

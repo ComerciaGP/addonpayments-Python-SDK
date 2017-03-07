@@ -7,16 +7,8 @@ import pytest
 
 from addonpayments.hpp.card_storage.requests import CardStorageRequest
 from addonpayments.hpp.payment.requests import PaymentRequest
-from addonpayments.hpp.tests.utils import sample_path, only_mandatory_hpp_request, hpp_request_storage_enabled
+from addonpayments.hpp.tests.utils import get_sample_path, only_mandatory_hpp_request, hpp_request_storage_enabled
 from addonpayments.hpp.utils import JsonUtils
-
-CHARSET = "utf-8"
-HPP_PAYMENT_REQUEST_VALID_JSON_PATH = "samples/hpp_payment_request.json"
-HPP_PAYMENT_REQUEST_SUPPLEMENTARY_JSON_PATH = "samples/hpp_payment_request_supplementary_data.json"
-HPP_PAYMENT_REQUEST_ENCODED_JSON_PATH = "samples/hpp_payment_request_encoded.json"
-HPP_CARD_STORAGE_REQUEST_VALID_JSON_PATH = "samples/hpp_card_storage_request.json"
-HPP_CARD_STORAGE_REQUEST_SUPPLEMENTARY_JSON_PATH = "samples/hpp_card_storage_request_supplementary_data.json"
-HPP_CARD_STORAGE_REQUEST_ENCODED_JSON_PATH = "samples/hpp_card_storage_request_encoded.json"
 
 
 @pytest.fixture()
@@ -33,35 +25,41 @@ def valid_hpp_request_storage_enabled():
 
 @pytest.fixture()
 def json_hpp_payment_request_valid():
-    with codecs.open(sample_path(HPP_PAYMENT_REQUEST_VALID_JSON_PATH), 'r', encoding='utf-8') as data_file:
-        yield JsonUtils.from_json_hpp_request(data_file.read(), CHARSET, False)
+    path = get_sample_path('samples/hpp_payment_request.json')
+    with codecs.open(path, 'r', encoding='utf-8') as data_file:
+        yield JsonUtils.from_json_hpp_request(data_file.read(), 'utf-8', False)
 
 
 @pytest.fixture()
 def json_hpp_payment_request_supplementary_data():
-    with codecs.open(sample_path(HPP_PAYMENT_REQUEST_SUPPLEMENTARY_JSON_PATH), 'r', encoding='utf-8') as data_file:
-        yield JsonUtils.from_json_hpp_request(data_file.read(), CHARSET, False)
+    path = get_sample_path('samples/hpp_payment_request_supplementary_data.json')
+    with codecs.open(path, 'r', encoding='utf-8') as data_file:
+        yield JsonUtils.from_json_hpp_request(data_file.read(), 'utf-8', False)
 
 
 @pytest.fixture()
 def json_hpp_payment_request_encoded():
-    with codecs.open(sample_path(HPP_PAYMENT_REQUEST_ENCODED_JSON_PATH), 'r', encoding='utf-8') as data_file:
-        yield JsonUtils.from_json_hpp_request(data_file.read(), CHARSET, True)
+    path = get_sample_path('samples/hpp_payment_request_encoded.json')
+    with codecs.open(path, 'r', encoding='utf-8') as data_file:
+        yield JsonUtils.from_json_hpp_request(data_file.read(), 'utf-8', True)
 
 
 @pytest.fixture()
 def json_hpp_card_storage_request_valid():
-    with codecs.open(sample_path(HPP_CARD_STORAGE_REQUEST_VALID_JSON_PATH), 'r', encoding='utf-8') as data_file:
-        yield JsonUtils.from_json_hpp_request(data_file.read(), CHARSET, False)
+    path = get_sample_path('samples/hpp_card_storage_request.json')
+    with codecs.open(path, 'r', encoding='utf-8') as data_file:
+        yield JsonUtils.from_json_hpp_request(data_file.read(), 'utf-8', False)
 
 
 @pytest.fixture()
 def json_hpp_card_storage_request_supp_data():
-    with codecs.open(sample_path(HPP_CARD_STORAGE_REQUEST_SUPPLEMENTARY_JSON_PATH), 'r', encoding='utf-8') as data_file:
-        yield JsonUtils.from_json_hpp_request(data_file.read(), CHARSET, False)
+    path = get_sample_path('samples/hpp_card_storage_request_supplementary_data.json')
+    with codecs.open(path, 'r', encoding='utf-8') as data_file:
+        yield JsonUtils.from_json_hpp_request(data_file.read(), 'utf-8', False)
 
 
 @pytest.fixture()
 def json_hpp_card_storage_request_encoded():
-    with codecs.open(sample_path(HPP_CARD_STORAGE_REQUEST_ENCODED_JSON_PATH), 'r', encoding='utf-8') as data_file:
-        yield JsonUtils.from_json_hpp_request(data_file.read(), CHARSET, True)
+    path = get_sample_path('samples/hpp_card_storage_request_encoded.json')
+    with codecs.open(path, 'r', encoding='utf-8') as data_file:
+        yield JsonUtils.from_json_hpp_request(data_file.read(), 'utf-8', True)
