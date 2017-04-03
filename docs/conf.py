@@ -53,8 +53,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'addonpayments'
-copyright = u'2017, Marc Galofré'
-author = u'Marc Galofré'
+copyright = u'2017, APSL'
+author = u'APSL'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
