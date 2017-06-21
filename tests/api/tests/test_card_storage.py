@@ -4,12 +4,12 @@ from __future__ import absolute_import, unicode_literals
 
 import pytest
 
-from addonpayments.api.tests.conftest import BaseTest
 from addonpayments.api.card_storage.requests import (ReceiptInRequest, CardUpdateRequest, CardNewRequest,
                                                      CardCancelRequest, CardDccRateRequest, PayerNewRequest,
                                                      RealVaultThreeDsVerifyEnrolled, PayerEditRequest,
                                                      AuthRequestWithRecurring)
 from addonpayments.api.client import ApiClient
+from tests.conftest import BaseTest
 
 
 class TestCardStorage(BaseTest):

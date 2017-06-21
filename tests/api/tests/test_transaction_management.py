@@ -4,10 +4,10 @@ from __future__ import absolute_import, unicode_literals
 
 import pytest
 
-from addonpayments.api.tests.conftest import BaseTest
 from addonpayments.api.client import ApiClient
 from addonpayments.api.payment.requests import AuthRequest
 from addonpayments.api.transaction_management.requests import Settle, Rebate, Void
+from tests.conftest import BaseTest
 
 
 class TestTransactionManagement(BaseTest):

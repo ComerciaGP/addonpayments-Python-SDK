@@ -4,9 +4,9 @@ from __future__ import absolute_import, unicode_literals
 
 import pytest
 
-from addonpayments.api.tests.conftest import BaseTest
 from addonpayments.api.client import ApiClient
 from addonpayments.api.three_ds.requests import ThreeDsVerifyEnrolled, ThreeDsVerifySig, AuthRequestWithThreeDS
+from tests.conftest import BaseTest
 
 
 class TestThreeDs(BaseTest):

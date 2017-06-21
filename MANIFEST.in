@@ -1,5 +1,4 @@
 include AUTHORS
 include LICENSE
-include CHANGELOG
+include CHANGELOG.rst
 include README.rst
-recursive-include addonpayments-sdk-python *

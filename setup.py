@@ -34,24 +34,32 @@ def get_email(package):
     return re.search("^__email__ = ['\"]([^'\"]+)['\"]", init_py, re.MULTILINE).group(1)
 
 
+def get_long_description():
+    """
+    return the long description from README.rst file
+    :return:
+    """
+    return codecs.open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='utf-8').read()
+
+
 setup(
     name='addonpayments-sdk-python',
     version=get_version('addonpayments'),
-    packages=find_packages(exclude=('*.tests*')),
-    include_package_data=True,
-    keywords="addonpayments sdk python hpp api",
+    author=get_author('addonpayments'),
+    author_email=get_email('addonpayments'),
+    url='https://github.com/ComerciaGP/addonpayments-Python-SDK',
+    packages=find_packages(),
+    license='BSD',
     description='A SDK Addonpayments implemented with Python.',
-    long_description=codecs.open(os.path.join(os.path.dirname(__file__), 'README.rst'), encoding='utf-8').read(),
+    long_description=get_long_description(),
     install_requires=[
+        'six',
         'python-decouple',
         'attrs',
         'xmltodict',
         'requests',
-        'future'
+        'future',
     ],
-    url='https://gitlab.apsl.net/addonpayments/addonpayments-sdk-python',
-    author=get_author('addonpayments'),
-    author_email=get_email('addonpayments'),
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
@@ -62,5 +70,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Operating System :: OS Independent',
         'Topic :: Software Development'
-    ]
+    ],
+    include_package_data=True,
+    zip_safe=False,
 )

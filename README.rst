@@ -1,6 +1,9 @@
 AddonPayments SDK Python
 ========================
 
+.. image:: https://img.shields.io/pypi/v/addonpayments-sdk-python.svg
+    :target: https://pypi.python.org/pypi/addonpayments-sdk-python
+
 AddonPayments SDK Python is a library that allows integration with the SDK's of AddonPayments in a easy and fast way.
 There are two types of integration: HPP (Hosted Payment Page) and API.
 
