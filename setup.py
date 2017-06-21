@@ -48,7 +48,7 @@ setup(
     author=get_author('addonpayments'),
     author_email=get_email('addonpayments'),
     url='https://github.com/ComerciaGP/addonpayments-Python-SDK',
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests*']),
     license='BSD',
     description='A SDK Addonpayments implemented with Python.',
     long_description=get_long_description(),
