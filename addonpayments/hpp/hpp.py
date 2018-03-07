@@ -131,7 +131,7 @@ class Hpp(object):
 
         logger.debug("Decoding object.")
         try:
-            hpp_response = JsonUtils.from_json_hpp_response(json_response, self.encoding_charset, encoded)
+            hpp_response = JsonUtils().from_json_hpp_response(json_response, self.encoding_charset, encoded)
         except Exception as e:
             error_msg = "Exception decoding HPP response"
             logger.error("{}: {}".format(error_msg, e))
