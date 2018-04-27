@@ -55,7 +55,7 @@ setup(
     install_requires=[
         'six',
         'python-decouple',
-        'attrs',
+        'attrs>=16.3.0,<17.3.0',
         'xmltodict',
         'requests',
         'future',
