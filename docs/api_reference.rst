@@ -48,7 +48,7 @@ For more detailed information, please see the section `Authorisation <https://de
 
 .. code-block:: python
 
-    from addonpayments.api.elements Cvn, CardWithCvn
+    from addonpayments.api.elements import Cvn, CardWithCvn
     from addonpayments.api.client import ApiClient
     from addonpayments.api.payment.requests import AuthRequest
 
@@ -149,7 +149,7 @@ For more detailed information, please see the section `Payer new <https://desarr
 
 .. code-block:: python
 
-    from addonpayments.api.elements Address, PhoneNumbers, Payer
+    from addonpayments.api.elements import Address, PhoneNumbers, Payer
     from addonpayments.api.client import ApiClient
     from addonpayments.api.card_storage.requests import PayerNewRequest
 
@@ -205,7 +205,7 @@ For more detailed information, please see the section `Payer edit <https://desar
 
 .. code-block:: python
 
-    from addonpayments.api.elements Address, PhoneNumbers, Payer
+    from addonpayments.api.elements import Address, PhoneNumbers, Payer
     from addonpayments.api.client import ApiClient
     from addonpayments.api.card_storage.requests import PayerEditRequest
 
@@ -262,7 +262,7 @@ For more detailed information, please see the section `Card new <https://desarro
 
 .. code-block:: python
 
-    from addonpayments.api.elements Cvn, CardWithCvn
+    from addonpayments.api.elements import Cvn, CardWithCvn
     from addonpayments.api.client import ApiClient
     from addonpayments.api.card_storage.requests import CardNewRequest
 
@@ -296,7 +296,7 @@ For more detailed information, please see the section `Card update <https://desa
 
 .. code-block:: python
 
-    from addonpayments.api.elements Cvn, CardWithCvn
+    from addonpayments.api.elements import Cvn, CardWithCvn
     from addonpayments.api.client import ApiClient
     from addonpayments.api.card_storage.requests import CardUpdateRequest
 
@@ -330,7 +330,7 @@ For more detailed information, please see the section `Card cancel <https://desa
 
 .. code-block:: python
 
-    from addonpayments.api.elements Cvn, CardWithCvn
+    from addonpayments.api.elements import Cvn, CardWithCvn
     from addonpayments.api.client import ApiClient
     from addonpayments.api.card_storage.requests import CardCancelRequest
 
@@ -364,7 +364,7 @@ For more detailed information, please see the section `Card Dccrate <https://des
 
 .. code-block:: python
 
-    from addonpayments.api.elements DccInfo
+    from addonpayments.api.elements import DccInfo
     from addonpayments.api.client import ApiClient
     from addonpayments.api.card_storage.requests import CardDccRateRequest
 
@@ -398,7 +398,7 @@ For more detailed information, please see the section `Recurring <https://desarr
 
 .. code-block:: python
 
-    from addonpayments.api.elements Cvn, CardWithCvn, Recurring
+    from addonpayments.api.elements import Cvn, CardWithCvn, Recurring
     from addonpayments.api.client import ApiClient
     from addonpayments.api.card_storage.requests import AuthRequestWithRecurring
 
@@ -440,7 +440,7 @@ For more detailed information, please see the section `3DS verify enrolled <http
 
 .. code-block:: python
 
-    from addonpayments.api.elements Card
+    from addonpayments.api.elements import Card
     from addonpayments.api.client import ApiClient
     from addonpayments.api.three_ds.requests import ThreeDsVerifyEnrolled
 
@@ -472,7 +472,7 @@ For more detailed information, please see the section `3DS verify sig <https://d
 
 .. code-block:: python
 
-    from addonpayments.api.elements Card
+    from addonpayments.api.elements import Card
     from addonpayments.api.client import ApiClient
     from addonpayments.api.three_ds.requests import ThreeDsVerifySig
 
@@ -512,7 +512,7 @@ For more detailed information, please see the section `Authorisation with 3D Sec
 
 .. code-block:: python
 
-    from addonpayments.api.elements Cvn, CardWithCvn, Mpi
+    from addonpayments.api.elements import Cvn, CardWithCvn, Mpi
     from addonpayments.api.client import ApiClient
     from addonpayments.api.three_ds.requests import AuthRequestWithThreeDS
 
@@ -637,7 +637,7 @@ For more detailed information, please see the section `DCC Rate <https://desarro
 
 .. code-block:: python
 
-    from addonpayments.api.elements Card, DccInfoWithRateType
+    from addonpayments.api.elements import Card, DccInfoWithRateType
     from addonpayments.api.client import ApiClient
     from addonpayments.api.dcc.requests import DccRate
 
@@ -671,7 +671,7 @@ For more detailed information, please see the section `DCC Information <https://
 
 .. code-block:: python
 
-    from addonpayments.api.elements Cvn, CardWithCvn, Mpi
+    from addonpayments.api.elements import Cvn, CardWithCvn, Mpi
     from addonpayments.api.client import ApiClient
     from addonpayments.api.dcc.requests import AuthRequestWithDccInfo
 
